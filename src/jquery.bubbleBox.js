@@ -3,7 +3,6 @@
 */
 
 /*jshint browser: true, jquery: true, indent: 2, white: true, curly: true, forin: true, noarg: true, immed: true, newcap: true, noempty: true */
-
 (function ($) {
   $.widget("ui.bubbleBox", {
     options: {
@@ -35,7 +34,7 @@
       self.element.bind('blur keydown', function (event) {
         var newValue = self.input.val();
         
-        if (event.type === 'blur' || jQuery.inArray(event.which, self.options.triggerKeyCodes) !== false) {
+        if (event.type === 'blur' || jQuery.inArray(event.which, self.options.triggerKeyCodes) !== -1) {
           if (self.addItem(newValue, event)) {
             self.input.val('');
             event.preventDefault();
@@ -44,7 +43,7 @@
           self.removeItem(self.list.find('li:last-child'));
         }
       });
-      
+
       // Insert start data
       $(self.options.seedData).each(function () {
         self.addItem(this);
@@ -69,7 +68,7 @@
       var self = this,
           bubble;
           
-      if (!self.options.allowDupes && jQuery.inArray(value, self.val()) !== false) {
+      if (!self.options.allowDupes && jQuery.inArray(value, self.val()) !== -1) {
         return false;
       }
       
