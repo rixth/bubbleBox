@@ -20,7 +20,7 @@ By default, an unordered list is required with the ID of your input prefixed wit
 
 * val: fetch an array containing the values of each item, in the order they appear in the list
 * addItem(value): programmatically add a new value to the list
-* removeItem(jqCollection): remove the passed list item
+* remove(jqCollection): remove the passed list item
 * destroy: remove the plugin
 
 ## Events
