@@ -1,6 +1,6 @@
 # jquery.bubbleBox
 
-A simple jQuery UI widget to manage a list of items. There is a full suite of unit tests available in test/, written with Jasmine.
+A simple jQuery UI widget to manage a list of items. There is a full suite of unit tests available in test/, written with Jasmine. You can see an example and run the tests on the [plugin's website](http://rixth.github.com/bubbleBox/).
 
 ## HTML structure required
 
