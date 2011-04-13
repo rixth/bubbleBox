@@ -1,3 +1,7 @@
+/*! bubbleBox: a jQuery UI widget to manage a list of items
+    http://github.com/rixth/bubbleBox
+*/
+
 /*jshint browser: true, jquery: true, indent: 2, white: true, curly: true, forin: true, noarg: true, immed: true, newcap: true, noempty: true */
 
 (function ($) {
