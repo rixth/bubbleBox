@@ -143,8 +143,8 @@ describe("bubblebox", function () {
 
         box.bind('bubbleboxafteradd', callback);
         box.trigger(enterEvent);
-
-        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value', node: jasmine.any(HTMLElement)});
+        
+        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value', node: jasmine.any(Object)});
         expect(numberOfItems()).toEqual(1);
       });
     });
@@ -160,7 +160,7 @@ describe("bubblebox", function () {
         addThreeItems();
         box.trigger(backspaceEvent);
         expect(numberOfItems()).toEqual(2);
-        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value 3', node: jasmine.any(HTMLElement)});
+        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value 3', node: jasmine.any(Object)});
       });
       it("should trigger the remove event when an event is removed via the remove button", function () {
         var callback = jasmine.createSpy();
@@ -168,7 +168,7 @@ describe("bubblebox", function () {
         addThreeItems();
         $('#bubbleBox_list>li>div').eq(0).click();
         expect(numberOfItems()).toEqual(2);
-        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value 1', node: jasmine.any(HTMLElement)});
+        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value 1', node: jasmine.any(Object)});
       });
     });
   });

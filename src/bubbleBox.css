@@ -3,23 +3,37 @@
   padding: 0;
   margin: 10px 0;
 }
+
 .ui-bubblebox-item {
-  background: #DDD; /* for non-css3 browsers */
-  border: 1px solid #ddd;
-  border-bottom: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF', endColorstr='#DDD'); /* for IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD)); /* for webkit browsers */
-  background: -moz-linear-gradient(top,  #FFF,  #DDD); /* for firefox 3.6+ */ 
-  padding: 5px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
+  border:1px solid #cdd5e6;
+  background:#eff2f7;
+  color:#6a6a6a;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  
+  padding: 5px 15px 5px 5px;
   margin: 5px 0;
+  
+  position: relative;
 }
+
+.ui-bubblebox-item span {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .ui-bubblebox-removeItem {
-  float:right;
-  padding:0 0 0 6px;
   font-size:12px;
+  font-weight:bold;
   cursor:pointer;
   color:#abb8d4;
-  font-weight:bold;
+  
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.ui-bubblebox-removeItem:hover {
+  color: #bbb;
 }

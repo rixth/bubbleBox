@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Bubble Box test</title>
-  <link rel="stylesheet" href="src/bubbleBox.css" />
+  <link rel="stylesheet" href="./src/bubbleBox.css" />
   <style type="text/css">
     body {
       font-family: Helvetica, Arial, sans-serif;
       font-size: 12px;
     }
     #bubbleBox_list {
-      width: 200px;
+      width: 100px;
     }  
   </style>
 </head>
@@ -24,7 +24,7 @@
   <script type="text/javascript" src="./src/jquery.bubbleBox.js"></script>
   <script type="text/javascript">
     function debug(what) {
-      $('#debug_log').append(what + "\n");
+      $('#debug_log').append(what + "<br/>");
     }
     
     $('#bubbleBox').bubbleBox({
