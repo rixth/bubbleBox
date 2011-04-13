@@ -21,22 +21,29 @@
       
       // Bind events
       if (self.options.showRemoveButton) {
-        self.list.delegate('.ui-bubbleBox-removeItem', 'click', function (event) {
+        self.list.delegate('.ui-bubblebox-removeItem', 'click', function (event) {
           $(this.parentNode).remove();
-          self._trigger('remove', event, {value: $(this).text, node: this});
+          self._trigger('remove', event, {value: $(this).parent().find('span').text(), node: this});
         });
       }
       
-      self.element.bind('blur keypress', function (event) {
+      self.element.bind('blur keydown', function (event) {
+        var bubbleValue = self.input.val(),
+            lastItem;
+        
         if (event.type === 'blur' || self.options.triggerKeyCodes.indexOf(event.which) !== -1) {
-          var bubbleValue = self.input.val();
-          
           if (bubbleValue !== '' && !bubbleValue.match(/^\s+$/) && self._trigger('beforeAdd', event, { value: bubbleValue }) !== false) {
             self.input.val('');
             self._trigger('afterAdd', event, { value: bubbleValue, node: self.addItem(bubbleValue) });
           }
           
           event.preventDefault();
+        } if (bubbleValue === '' && event.type === 'keydown' && event.which === 8) {
+          lastItem = self.list.find('li:last-child');
+          if (lastItem.length) {
+            $(lastItem).remove();
+            self._trigger('remove', event, {value: $(lastItem).parent().find('span').text(), node: lastItem});
+          }
         }
       });
       
@@ -46,7 +53,7 @@
       });
     },
     _createBubble: function (value) {
-      var removeButton = this.options.showRemoveButton ? '<div class="ui-bubbleBox-removeItem">x</div>' : '';
+      var removeButton = this.options.showRemoveButton ? '<div class="ui-bubblebox-removeItem">x</div>' : '';
       return $('<li class="ui-bubblebox-item"><span>' + value + '</span>' + removeButton + '</li>');
     },
     val: function () {
@@ -54,9 +61,13 @@
       this.list.children().each(function () {
         values.push($(this).find('span').text())
       })
-      return values.join(',');
+      return values;
     },
     addItem: function (value) {
+      if (!this.options.allowDupes && this.val().indexOf(value) !== -1) {
+        return false;
+      }
+      
       var bubble = this._createBubble(value);
       this.list.append(bubble);
       return bubble;

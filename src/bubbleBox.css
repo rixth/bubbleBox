@@ -1,0 +1,25 @@
+.ui-bubblebox-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+.ui-bubblebox-item {
+  background: #DDD; /* for non-css3 browsers */
+  border: 1px solid #ddd;
+  border-bottom: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF', endColorstr='#DDD'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #FFF,  #DDD); /* for firefox 3.6+ */ 
+  padding: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  margin: 5px 0;
+}
+.ui-bubblebox-removeItem {
+  float:right;
+  padding:0 0 0 6px;
+  font-size:12px;
+  cursor:pointer;
+  color:#abb8d4;
+  font-weight:bold;
+}
