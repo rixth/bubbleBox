@@ -60,10 +60,15 @@
   <script src="https://github.com/rixth/bubbleBox/raw/master/src/jquery.bubbleBox.js"></script>
   
   <script>
-    $(document).ready(function () {
+    $(document).ready(function () {      
       $('#debug_log').empty();
       function debug(what) {
-        $('#debug_log').append(what + "\n");
+        $('#debug_log').append(what + "<br />");
+      }
+      
+      if ($.browser.msie && $.browser.version >= 9) {
+        debug("Sorry, this demo doesn't work directly on GitHub due to SEC-7211.");
+        return;
       }
 
       $('#bubbleBox').bubbleBox({

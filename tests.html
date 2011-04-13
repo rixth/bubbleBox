@@ -7,6 +7,7 @@
 </head>
 <body>
 
+<h3 style="display:none">These tests will not run in IE9/10 direct from the website due to SEC-7221.</h3>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
@@ -18,6 +19,9 @@
 <script type="text/javascript" src="https://github.com/rixth/bubbleBox/raw/master/test/bubbleBox.spec.js"></script>
   
 <script type="text/javascript">
+  if ($.browser.msie && $.browser.version >= 9) {
+    $('body>h3').show();
+  }
   jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
   jasmine.getEnv().execute();
 </script>
