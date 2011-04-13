@@ -123,7 +123,7 @@ describe("bubblebox", function () {
 
         box.bind('bubbleboxbeforeadd', callback);
         box.trigger(enterEvent);
-        expect(callback).toHaveBeenCalled();
+        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value' });
       });
       it("should not add an item if any of the beforeAdd handlers return false", function () {
         box.val('my value'),
@@ -132,7 +132,7 @@ describe("bubblebox", function () {
         box.bind('bubbleboxbeforeadd', callback);
         box.trigger(enterEvent);
 
-        expect(callback).toHaveBeenCalled();
+        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value' });
         expect(numberOfItems()).toEqual(0);
       });
       it("should trigger the afterAdd event after a new item is added", function () {
@@ -142,7 +142,7 @@ describe("bubblebox", function () {
         box.bind('bubbleboxafteradd', callback);
         box.trigger(enterEvent);
 
-        expect(callback).toHaveBeenCalled();
+        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value', node: jasmine.any(HTMLElement)});
         expect(numberOfItems()).toEqual(1);
       });
     });
@@ -155,18 +155,18 @@ describe("bubblebox", function () {
         backspaceEvent.which = 8;
           
         box.bind('bubbleboxremove', callback)
-        box.bubbleBox("addItem", "my value 1");
+        addThreeItems();
         box.trigger(backspaceEvent);
-        expect(numberOfItems()).toEqual(0);
-        expect(callback).toHaveBeenCalled();
+        expect(numberOfItems()).toEqual(2);
+        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value 3', node: jasmine.any(HTMLElement)});
       });
       it("should trigger the remove event when an event is removed via the remove button", function () {
         var callback = jasmine.createSpy();
-        box.bind('bubbleboxremove', callback)
-        box.bubbleBox("addItem", "my value 1");
+        box.bind('bubbleboxremove', callback);
+        addThreeItems();
         $('#bubbleBox_list>li>div').eq(0).click();
-        expect(numberOfItems()).toEqual(0);
-        expect(callback).toHaveBeenCalled();
+        expect(numberOfItems()).toEqual(2);
+        expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value 1', node: jasmine.any(HTMLElement)});
       });
     });
   });
