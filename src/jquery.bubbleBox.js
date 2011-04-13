@@ -35,7 +35,7 @@
       self.element.bind('blur keydown', function (event) {
         var newValue = self.input.val();
         
-        if (event.type === 'blur' || self.options.triggerKeyCodes.indexOf(event.which) !== -1) {
+        if (event.type === 'blur' || jQuery.inArray(event.which, self.options.triggerKeyCodes) !== false) {
           if (self.addItem(newValue, event)) {
             self.input.val('');
             event.preventDefault();
@@ -69,7 +69,7 @@
       var self = this,
           bubble;
           
-      if (!self.options.allowDupes && self.val().indexOf(value) !== -1) {
+      if (!self.options.allowDupes && jQuery.inArray(value, self.val()) !== false) {
         return false;
       }
       
