@@ -20,11 +20,11 @@ By default, an unordered list is required with the ID of your input prefixed wit
 
 * val: fetch an array containing the values of each item, in the order they appear in the list
 * addItem(value): programmatically add a new value to the list
-* remove(jqCollection): remove the passed list item
+* removeItem(jqCollection): remove the passed list item
 * destroy: remove the plugin
 
 ## Events
 
 * beforeAdd: called just before an event is added to the list. If any of the handlers attached return false, the item won't be appended. This is useful for validation. Passed the browser event, and an object with the key 'value'.
 * afterAdd: called just after an item is added to the list, allowing you to decorate it with extra functionality if desired. Passed the browser event, and an object with the keys 'value', and 'node'.
-* afterAdd: called when an item is removed from the list, allowing you to decorate it with extra functionality if desired. Passed the browser event, and an object with the keys 'value', and 'node'.
+* remove: called when an item is removed from the list, allowing you to decorate it with extra functionality if desired. Passed the browser event, and an object with the keys 'value', and 'node'.
