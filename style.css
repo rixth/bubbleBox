@@ -1,0 +1,71 @@
+body {
+  font-family: "Helvetica Neue", "Lucida Grande", "Arial";
+  background: #F8F8F8;
+  background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9))  no-repeat;
+  background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9) no-repeat;
+  color: #555;
+  margin: 0;
+  text-align:justify;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+}
+
+#container {
+  margin: 0 auto;
+  width: 630px;
+}
+
+blockquote {
+  border-left: 5px solid #ccc;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+h1 {
+  font-size: 3.8em;
+  color: #121621;
+  margin-bottom: 3px;
+  text-shadow: 1px 1px 0px #ccc;
+}
+h1 a {
+  color: #121621;
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 1.35em; color: #3a8e11;
+}
+
+a {
+  color: #3a8e11;
+}
+
+
+.download {
+  float: right;
+}
+pre {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+}
+
+.footer {
+  text-align:center;
+  padding-top:10px;
+  font-style: italic;
+  color: #888;
+}
+
+#bubbleBox {
+  width: 98%;
+  font-size: 14px;
+}
+
+#example {
+  float: left;
+  width: 205px;
+  margin-right: 20px;
+}
+#debug_log {
+  float: left;
+  width: 375px;
+}
