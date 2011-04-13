@@ -3,19 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Bubble Box test</title>
+  <link rel="stylesheet" href="src/bubbleBox.css" />
+  <style type="text/css">
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+    }
+    #bubbleBox_list {
+      width: 200px;
+    }  
+  </style>
 </head>
 <body>
   <ul id="bubbleBox_list"></ul><input id="bubbleBox" type="text" />
-  
+  <p>This demo of bubbleBox only supports entering email addresses.</p>
+  <pre id="debug_log"></pre>
+    
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
   <script type="text/javascript" src="./src/jquery.bubbleBox.js"></script>
   <script type="text/javascript">
+    function debug(what) {
+      $('#debug_log').append(what + "\n");
+    }
+    
     $('#bubbleBox').bubbleBox({
-      seedData: ['tom@rixth.org', 'trix@trulia.com', 'asubstitute@google.com'],
+      seedData: ['test@gmail.com', 'test@hotmail.com', 'test@aol.com'],
+      beforeAdd: function (event, data) {
+        if (!data.value.match(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)) {
+          debug('FAILED: not a valid email address');
+          return false;
+        }
+      },
+      afterAdd: function (event, data) {
+        debug('added item '+ data.value);
+      },
+      remove: function (event, data) {
+        debug('remove item '+ data.value);
+      }
     });
   </script>
-
-  
 </body>
 </html>
