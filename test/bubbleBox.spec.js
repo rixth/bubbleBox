@@ -1,3 +1,5 @@
+/*globals jasmine, describe, it, beforeEach, setFixtures, expect */
+
 describe("bubblebox", function () {
   function resetHtml() {
     setFixtures('<ul id="bubbleBox_list"></ul><div id="bubbleBox"></div>');
@@ -43,16 +45,16 @@ describe("bubblebox", function () {
       expect(box.val()).toEqual('');
     });
     it("should add a new item when comma is pressed", function () {
-      box.val('my value'),
-          commaEvent = $.Event('keydown');
+      box.val('my value');
+      var commaEvent = $.Event('keydown');
       
       commaEvent.which = $.ui.keyCode.COMMA;
       box.trigger(commaEvent);
       expect(numberOfItems()).toEqual(1);
     });
     it("should add a new item when semicolon is pressed", function () {
-      box.val('my value'),
-          semicolonEvent = $.Event('keydown');
+      box.val('my value');
+      var semicolonEvent = $.Event('keydown');
       
       semicolonEvent.which = 59;
       box.trigger(semicolonEvent);
@@ -86,7 +88,7 @@ describe("bubblebox", function () {
       it("should add items upon instantiation", function () {
         resetHtml();
         box.bubbleBox({
-          seedData: ['Trulia', 'Zillow'],
+          seedData: ['Trulia', 'Zillow']
         });
         expect(numberOfItems()).toEqual(2);
         expect(box.bubbleBox("val").join(",")).toEqual("Trulia,Zillow");
@@ -118,16 +120,16 @@ describe("bubblebox", function () {
       enterEvent.which = $.ui.keyCode.ENTER;
 
       it("should trigger the beforeAdd event before a new item is added", function () {
-        box.val('my value'),
-            callback = jasmine.createSpy();
+        box.val('my value');
+        var callback = jasmine.createSpy();
 
         box.bind('bubbleboxbeforeadd', callback);
         box.trigger(enterEvent);
         expect(callback).toHaveBeenCalledWith(jasmine.any(Object), { value: 'my value' });
       });
       it("should not add an item if any of the beforeAdd handlers return false", function () {
-        box.val('my value'),
-            callback = jasmine.createSpy().andReturn(false);
+        box.val('my value');
+        var callback = jasmine.createSpy().andReturn(false);
 
         box.bind('bubbleboxbeforeadd', callback);
         box.trigger(enterEvent);
@@ -136,8 +138,8 @@ describe("bubblebox", function () {
         expect(numberOfItems()).toEqual(0);
       });
       it("should trigger the afterAdd event after a new item is added", function () {
-        box.val('my value'),
-            callback = jasmine.createSpy();
+        box.val('my value');
+        var callback = jasmine.createSpy();
 
         box.bind('bubbleboxafteradd', callback);
         box.trigger(enterEvent);
@@ -154,7 +156,7 @@ describe("bubblebox", function () {
             
         backspaceEvent.which = 8;
           
-        box.bind('bubbleboxremove', callback)
+        box.bind('bubbleboxremove', callback);
         addThreeItems();
         box.trigger(backspaceEvent);
         expect(numberOfItems()).toEqual(2);
