@@ -1,0 +1,39 @@
+.ui-bubblebox-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.ui-bubblebox-item {
+  border:1px solid #cdd5e6;
+  background:#eff2f7;
+  color:#6a6a6a;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  
+  padding: 5px 15px 5px 5px;
+  margin: 5px 0;
+  
+  position: relative;
+}
+
+.ui-bubblebox-item span {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-bubblebox-removeItem {
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+  color:#abb8d4;
+  
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.ui-bubblebox-removeItem:hover {
+  color: #bbb;
+}
